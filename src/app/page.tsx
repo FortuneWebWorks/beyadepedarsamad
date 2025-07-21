@@ -38,8 +38,7 @@ export default function Home() {
       >
         <audio
           controls
-          src="/voice.m4a
-"
+          src="https://raw.githubusercontent.com/FortuneWebWorks/beyadepedarsamad/master/public/voice.m4a"
           className="w-full"
         />
       </motion.figure>
