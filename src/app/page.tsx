@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-const basePath = "/beyadepedarsamad";
+import Pic from "./picture.jpg";
 
 export default function Home() {
   return (
@@ -23,7 +22,7 @@ export default function Home() {
         transition={{ delay: 0.3, duration: 0.8 }}
       >
         <Image
-          src={`${basePath}/picture.jpg`}
+          src={Pic}
           alt="حاج صدم هاشمی"
           width={300}
           height={300}
@@ -37,7 +36,12 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="w-full max-w-xs md:max-w-sm"
       >
-        <audio controls src={`${basePath}/voice.m4a`} className="w-full" />
+        <audio
+          controls
+          src="/public/voice.m4a
+"
+          className="w-full"
+        />
       </motion.figure>
 
       <motion.blockquote
