@@ -38,7 +38,7 @@ export default function Home() {
       >
         <audio
           controls
-          src="/public/voice.m4a
+          src="/voice.m4a
 "
           className="w-full"
         />
