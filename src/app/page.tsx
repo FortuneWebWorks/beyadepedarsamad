@@ -13,7 +13,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        حاج صدم هاشمی
+        حاج صمد هاشمی
       </motion.h1>
 
       <motion.div
@@ -23,7 +23,7 @@ export default function Home() {
       >
         <Image
           src={Pic}
-          alt="حاج صدم هاشمی"
+          alt="حاج صمد هاشمی"
           width={300}
           height={300}
           className="rounded-xl shadow-lg object-cover w-64 h-64 md:w-72 md:h-72"
