@@ -36,11 +36,7 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="w-full max-w-xs md:max-w-sm"
       >
-        <audio
-          controls
-          src="https://raw.githubusercontent.com/FortuneWebWorks/beyadepedarsamad/master/public/voice.m4a"
-          className="w-full"
-        />
+        <audio controls src="/voice.m4a" className="w-full" />
       </motion.figure>
 
       <motion.blockquote
