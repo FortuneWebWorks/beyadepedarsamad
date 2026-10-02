@@ -80,14 +80,14 @@ export type VideoItem = {
 };
 
 export const voices: VoiceItem[] = [
-  { id: "voice-1", src: "/voice.m4a", title: "طنینِ آشنا" },
-  { id: "voice-2", src: "/voice2.m4a", title: "آوای ماندگار" },
+  { id: "voice-1", src: "/voice.m4a", title: "آوای ماندگار ۱" },
+  { id: "voice-2", src: "/voice2.m4a", title: "آوای ماندگار ۲" },
 ];
 
 export const videos: VideoItem[] = [
   {
     id: "14bkWbO93H4ft-fKcfvj6oHDj--KbZlDW",
-    title: "برگی از خاطرات",
+    title: "برگی از خاطرات ۱",
     src: "/videos/memorial-1.mp4",
     poster: "/videos/memorial-1.jpg",
     width: 1280,
@@ -95,7 +95,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: "16nx3O3voipyC0iGKhAEqxJVNTmmClVFa",
-    title: "لحظاتِ ثبت‌شده",
+    title: "برگی از خاطرات ۲",
     src: "/videos/memorial-2.mp4",
     poster: "/videos/memorial-2.jpg",
     width: 464,
@@ -103,7 +103,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: "1mYNM8YOoGaRumhw2ubsrGKlIGNEEB-MA",
-    title: "در قابِ زمان",
+    title: "برگی از خاطرات ۳",
     src: "/videos/memorial-3.mp4",
     poster: "/videos/memorial-3.jpg",
     width: 1080,
@@ -111,7 +111,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: "1aauOcjXU02GcsBxdCf4jnmlEMdqiQKjv",
-    title: "یادگاری از روزهای شیرین",
+    title: "برگی از خاطرات ۴",
     src: "/videos/memorial-4.mp4",
     poster: "/videos/memorial-4.jpg",
     width: 1080,
@@ -120,9 +120,9 @@ export const videos: VideoItem[] = [
 ];
 
 export const photos: MediaItem[] = [
-  { id: "1bEMY-G9XdkuL6CrLtiFpgnHcrZpLo43Z", title: "نگاهی از گذشته" },
-  { id: "10Ivr--92SBo0Hf8F4MGFttK1h3IBaKL7", title: "قابِ خاطره" },
-  { id: "1Y8Lu4b29JPWhmwnvQpe1TY0BFe7pzF0-", title: "لحظهٔ جاودان" },
+  { id: "1bEMY-G9XdkuL6CrLtiFpgnHcrZpLo43Z", title: "یادگاری از روزهای شیرین ۱" },
+  { id: "10Ivr--92SBo0Hf8F4MGFttK1h3IBaKL7", title: "یادگاری از روزهای شیرین ۲" },
+  { id: "1Y8Lu4b29JPWhmwnvQpe1TY0BFe7pzF0-", title: "یادگاری از روزهای شیرین ۳" },
 ];
 
 /** Section labels, rendered as numbered headings. */
