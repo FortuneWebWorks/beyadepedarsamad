@@ -27,7 +27,6 @@ export function PhotoGallery() {
         <SectionHeading
           index={sections.photos.index}
           title={sections.photos.title}
-          description="برای دیدن هر تصویر در اندازهٔ کامل، روی آن بزنید."
         />
 
         <RevealGroup className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1} as="ul">
