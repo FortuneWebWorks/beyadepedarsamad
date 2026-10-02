@@ -1,28 +1,170 @@
-@import url("../fonts/iranSans/css/style.css");
-@import url("../fonts/iranSans/numbers/css/style.css");
-
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Design tokens.
+   Every colour is defined once here and re-exposed through @theme inline
+   so Tailwind utilities (bg-surface, text-ink-soft…) resolve to the runtime
+   value and therefore switch with the theme.
+   ------------------------------------------------------------------ */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light: warm paper */
+  --bg: #f7f3ec;
+  --bg-elev: #fffdf9;
+  --bg-sunk: #efe8dc;
+  --ink: #23201c;
+  --ink-soft: #5c554c;
+  --ink-faint: #8d8479;
+  --line: rgb(35 32 28 / 0.1);
+  --line-strong: rgb(35 32 28 / 0.2);
+  --accent: #96773c;
+  --accent-soft: #d8c49a;
+  --accent-contrast: #fffdf9;
+  --glow: rgb(150 119 60 / 0.18);
+  --scrim: rgb(22 19 16 / 0.75);
+  --shadow-color: 28 24 18;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* Dark: warm ink, lamplit brass */
+  --bg: #14120f;
+  --bg-elev: #1d1a16;
+  --bg-sunk: #0f0e0c;
+  --ink: #f3ede3;
+  --ink-soft: #b8afa2;
+  --ink-faint: #8a8175;
+  --line: rgb(243 237 227 / 0.12);
+  --line-strong: rgb(243 237 227 / 0.24);
+  --accent: #d6b273;
+  --accent-soft: #6d5831;
+  --accent-contrast: #16130f;
+  --glow: rgb(214 178 115 / 0.16);
+  --scrim: rgb(8 7 6 / 0.82);
+  --shadow-color: 0 0 0;
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-bg-sunk: var(--bg-sunk);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-scrim: var(--scrim);
+
+  --font-sans: var(--font-iran), Tahoma, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(var(--shadow-color) / 0.04), 0 8px 24px -12px rgb(var(--shadow-color) / 0.14);
+  --shadow-lift: 0 2px 4px rgb(var(--shadow-color) / 0.05), 0 24px 48px -20px rgb(var(--shadow-color) / 0.28);
+  --shadow-portrait: 0 40px 80px -32px rgb(var(--shadow-color) / 0.5);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ------------------------------------------------------------------
+   Ambient loops. Declared in @theme so Tailwind emits the keyframes.
+   ------------------------------------------------------------------ */
+@theme {
+  --animate-drift: drift 22s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-iran), Tahoma, system-ui, sans-serif;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-theme="dark"] {
+      scrollbar-color: var(--line-strong) transparent;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------------ */
+
+/* Persian numerals (۰۱۲۳) for counters and timestamps. */
+@utility nums {
+  font-family: var(--font-iran-fanum), var(--font-iran), Tahoma, sans-serif;
+}
+
+/* Fine film grain — softens large flat areas without an image request. */
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+/* Screens that ask for less motion get none of the decorative loops. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
