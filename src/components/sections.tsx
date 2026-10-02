@@ -11,7 +11,6 @@ export function VoicesSection() {
         <SectionHeading
           index={sections.voices.index}
           title={sections.voices.title}
-          description="برای رفتن به بخش دیگری از صفحه، پخش را متوقف کنید."
         />
 
         <RevealGroup as="ul" className="grid gap-5" stagger={0.12}>
@@ -33,7 +32,6 @@ export function VideosSection() {
         <SectionHeading
           index={sections.videos.index}
           title={sections.videos.title}
-          description="با کلیک روی هر کارت، ویدیو پخش می‌شود؛ کنترل‌های پخش، جابه‌جایی و تمام‌صفحه در دسترس شماست. هر ویدیو تنها پس از انتخاب شما بارگذاری می‌شود."
         />
 
         <RevealGroup as="ul" className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
